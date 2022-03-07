@@ -1,0 +1,8 @@
+#!/bin/bash
+
+SCALE=$(( $GRID_UNIT_PX / 8 ))
+
+export GDK_BACKEND=x11
+export GDK_SCALE=$SCALE
+
+exec ./codium --force-device-scale-factor=$SCALE "$@"

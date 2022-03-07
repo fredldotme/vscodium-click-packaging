@@ -1,15 +1,15 @@
 {
-    "name": "code.visualstudio.com",
-    "description": "Code Editor by Microsoft",
+    "name": "codium.vscodium.com",
+    "description": "Open Source Code Editor",
     "architecture": "@CLICK_ARCH@",
-    "title": "Visual Studio Code",
+    "title": "VSCodium",
     "hooks": {
         "code": {
-            "apparmor": "code.apparmor",
-            "desktop":  "code.desktop"
+            "apparmor": "codium.apparmor",
+            "desktop":  "codium.desktop"
         }
     },
-    "version": "1.64.2",
+    "version": "1.65.0",
     "maintainer": "Alfred Neumayer <dev.beidl@gmail.com>",
     "framework" : "@CLICK_FRAMEWORK@"
 }

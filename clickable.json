@@ -3,7 +3,7 @@
   "builder": "custom",
   "default": "clean build click-build",
   "kill": "code*",
-  "build": "bash ${ROOT}/build.sh arm64",
+  "build": "bash ${ROOT}/build.sh ${ARCH}",
   "dependencies_host": [
     "libgles2",
     "wget"

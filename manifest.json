@@ -1,0 +1,15 @@
+{
+    "name": "code.visualstudio.com",
+    "description": "Code Editor by Microsoft",
+    "architecture": "@CLICK_ARCH@",
+    "title": "Visual Studio Code",
+    "hooks": {
+        "code": {
+            "apparmor": "code.apparmor",
+            "desktop":  "code.desktop"
+        }
+    },
+    "version": "1.64.2",
+    "maintainer": "Alfred Neumayer <dev.beidl@gmail.com>",
+    "framework" : "@CLICK_FRAMEWORK@"
+}

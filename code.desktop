@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Visual Studio Code
-Exec=env GDK_BACKEND=x11 GDK_SCALE=2 ./code --force-device-scale-factor=2 %U
-Icon=resources/app/resources/linux/code.png
+Exec=env GDK_BACKEND=x11 GDK_SCALE=2 ./opt/vscode/code --force-device-scale-factor=2 %U
+Icon=./opt/vscode/resources/app/resources/linux/code.png
 Terminal=false
 Type=Application
 X-Ubuntu-Touch=true

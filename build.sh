@@ -27,5 +27,7 @@ cp $ROOT/codium.apparmor $pkgdir/
 cp $ROOT/codium.desktop $pkgdir/
 cp $ROOT/codium.wrapper $pkgdir/
 chmod a+x $pkgdir/codium.wrapper
+chown root $pkgdir/chrome-sandbox
+chmod 4755 $pkgdir/chrome-sandbox
 
 exit 0

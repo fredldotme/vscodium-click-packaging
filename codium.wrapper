@@ -8,6 +8,8 @@ export PATH=$PWD/bin:$PATH
 
 # This is ridiculous
 wsf=$HOME/.cache/unity8/windowstatestorage.sqlite
-sqlite3 "$wsf" "delete from state where windowId like 'codium.vscodium.com_code';"
+if [ -f "$wsf" ]; then
+    sqlite3 "$wsf" "delete from state where windowId like 'codium.vscodium.com_code';"
+fi
 
 exec gtk3-nocsd ./codium --no-sandbox --ozone-platform=wayland --force-device-scale-factor=$SCALE "$@"

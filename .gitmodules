@@ -2,3 +2,12 @@
 	path = 3rdparty/gtk
 	url = https://gitlab.gnome.org/GNOME/gtk.git
 	branch = gtk-3-20
+[submodule "3rdparty/glib"]
+	path = 3rdparty/glib
+	url = https://gitlab.gnome.org/GNOME/glib.git
+[submodule "3rdparty/wayland-protocols"]
+	path = 3rdparty/wayland-protocols
+	url = https://gitlab.freedesktop.org/wayland/wayland-protocols.git
+[submodule "3rdparty/gtk-nocsd"]
+	path = 3rdparty/gtk-nocsd
+	url = https://github.com/PCMan/gtk3-nocsd.git

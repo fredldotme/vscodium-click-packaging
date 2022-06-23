@@ -2,21 +2,25 @@
   "clickable_minimum_required": "6.24.0",
   "builder": "custom",
   "default": "clean build click-build",
-  "kill": "code*",
+  "kill": "codium",
   "build": "bash ${ROOT}/build.sh ${ARCH}",
   "dependencies_host": [
-    "libgles2",
+    "gtk-doc-tools",
+    "libatk1.0-dev",
+    "libatk-bridge2.0-dev",
+    "libcairo2-dev",
+    "libepoxy-dev",
+    "libgirepository1.0-dev",
+    "libpango1.0-dev",
+    "libwayland-dev",
+    "libxi-dev",
+    "wayland-protocols",
     "wget"
   ],
   "dependencies_target": [
     "libasound2",
     "libfreetype6",
     "libglib2.0-0",
-    "libpng16-16",
-    "libgtk-3-0",
-    "libdbusmenu-glib4"
-  ],
-  "install_lib": [
-    "/usr/lib/${ARCH_TRIPLET}/libgtk-3.so*"
+    "libpng16-16"
   ]
 }

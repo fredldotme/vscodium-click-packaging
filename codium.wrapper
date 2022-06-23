@@ -2,7 +2,7 @@
 
 SCALE=$(( $GRID_UNIT_PX / 8 ))
 
-export GDK_BACKEND=x11
+export GDK_BACKEND=wayland
 export GDK_SCALE=$SCALE
 
-exec ./codium --no-sandbox --force-device-scale-factor=$SCALE "$@"
+exec ./codium --no-sandbox --ozone-platform=wayland --force-device-scale-factor=$SCALE "$@"

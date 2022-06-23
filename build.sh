@@ -1,8 +1,6 @@
 #!/bin/bash
 
-sed -e
-
-rm *.tar.gz
+set -e
 
 dlarch="$1"
 if [ "$1" == "amd64" ]; then
@@ -12,12 +10,29 @@ fi
 CLICK_ARCH=$(dpkg-architecture -qDEB_HOST_ARCH)
 CLICK_FRAMEWORK=ubuntu-sdk-16.04.5
 
-pkgver=1.65.0
-srcdir=$BUILD_DIR
+pkgver=1.68.1
+srcdir=$ROOT
 pkgdir=$INSTALL_DIR
-mkdir -p $srcdir $pkgdir
+pkgfile=VSCodium-linux-$dlarch-$pkgver.tar.gz
 
-wget https://github.com/VSCodium/vscodium/releases/download/$pkgver/VSCodium-linux-$dlarch-$pkgver.tar.gz
+if [ -f "$pkgfile" ]; then
+    rm "$pkgfile"
+fi
+
+mkdir -p $pkgdir
+
+# Build GTK
+OLD_PWD=$(pwd)
+cd $srcdir/3rdparty/gtk
+./autogen.sh
+./configure --prefix=$pkgdir
+make -j$(nproc --all)
+make install
+cd $OLD_PWD
+
+# Pull VSCodium
+
+wget https://github.com/VSCodium/vscodium/releases/download/$pkgver/$pkgfile
 tar xvf ./VSCodium-linux-$dlarch-$pkgver.tar.gz -C $pkgdir
 
 cp $ROOT/manifest.json $pkgdir/

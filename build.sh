@@ -21,14 +21,52 @@ fi
 
 mkdir -p $pkgdir
 
-# Build GTK
-OLD_PWD=$(pwd)
-cd $srcdir/3rdparty/gtk
-./autogen.sh
-./configure --prefix=$pkgdir
-make -j$(nproc --all)
-make install
-cd $OLD_PWD
+# Various common environment variables
+export PKG_CONFIG_PATH=$pkgdir/lib/pkgconfig:$pkgdir/share/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$pkgdir/lib:$LD_LIBRARY_PATH
+
+# Build wayland-protocols
+if [ ! -f $pkgdir/.wayland-protocols-done ]; then
+    OLD_PWD=$(pwd)
+    cd $srcdir/3rdparty/wayland-protocols
+    ./autogen.sh --prefix=$pkgdir
+    make -j$(nproc --all)
+    make install
+    touch $pkgdir/.wayland-protocols-done
+    cd $OLD_PWD
+fi
+
+# Build glib
+if [ ! -f $pkgdir/.glib-done ]; then
+    OLD_PWD=$(pwd)
+    cd $srcdir/3rdparty/glib
+    ./autogen.sh  --prefix=$pkgdir
+    make -j$(nproc --all)
+    make install
+    touch $pkgdir/.glib-done
+    cd $OLD_PWD
+fi
+
+# Build gtk
+if [ ! -f $pkgdir/.gtk-done ]; then
+    OLD_PWD=$(pwd)
+    cd $srcdir/3rdparty/gtk
+    ./autogen.sh --prefix=$pkgdir --disable-x11-backend --enable-wayland-backend
+    make -j$(nproc --all)
+    make install
+    touch $pkgdir/.gtk-done
+    cd $OLD_PWD
+fi
+
+# Build gtk-nocsd
+if [ ! -f $pkgdir/.gtk-nocsd-done ]; then
+    OLD_PWD=$(pwd)
+    cd $srcdir/3rdparty/gtk-nocsd
+    make -j$(nproc --all)
+    make install prefix=$pkgdir
+    touch $pkgdir/.gtk-nocsd-done
+    cd $OLD_PWD
+fi
 
 # Pull VSCodium
 

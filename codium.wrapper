@@ -4,5 +4,6 @@ SCALE=$(( $GRID_UNIT_PX / 8 ))
 
 export GDK_BACKEND=wayland
 export GDK_SCALE=$SCALE
+export PATH=$PWD/bin:$PATH
 
-exec ./codium --no-sandbox --ozone-platform=wayland --force-device-scale-factor=$SCALE "$@"
+exec gtk3-nocsd ./codium --no-sandbox --ozone-platform=wayland --force-device-scale-factor=$SCALE "$@"

@@ -1,9 +1,12 @@
 {
   "clickable_minimum_required": "6.24.0",
   "builder": "custom",
-  "default": "clean build click-build",
   "kill": "codium",
   "build": "bash ${ROOT}/build.sh ${ARCH}",
+  "dependencies_ppa": [
+    "\"deb [arch=amd64] http://archive.ubuntu.com/ubuntu xenial-backports universe restricted multiverse main\"",
+    "\"deb [arch=arm64,armhf] http://ports.ubuntu.com/ubuntu-ports xenial-backports universe restricted multiverse main\""
+  ],
   "dependencies_host": [
     "gtk-doc-tools",
     "libatk1.0-dev",
@@ -11,16 +14,16 @@
     "libcairo2-dev",
     "libepoxy-dev",
     "libgirepository1.0-dev",
+    "libmount-dev",
     "libpango1.0-dev",
     "libwayland-dev",
     "libxi-dev",
-    "wayland-protocols",
+    "python3-pip",
     "wget"
   ],
   "dependencies_target": [
     "libasound2",
     "libfreetype6",
-    "libglib2.0-0",
     "libpng16-16"
   ]
 }

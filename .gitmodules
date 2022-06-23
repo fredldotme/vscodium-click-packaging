@@ -10,4 +10,4 @@
 	url = https://gitlab.freedesktop.org/wayland/wayland-protocols.git
 [submodule "3rdparty/gtk-nocsd"]
 	path = 3rdparty/gtk-nocsd
-	url = https://github.com/PCMan/gtk3-nocsd.git
+	url = https://github.com/fredldotme/gtk3-nocsd.git

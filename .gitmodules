@@ -1,0 +1,4 @@
+[submodule "3rdparty/gtk"]
+	path = 3rdparty/gtk
+	url = https://gitlab.gnome.org/GNOME/gtk.git
+	branch = gtk-3-20

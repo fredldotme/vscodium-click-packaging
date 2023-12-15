@@ -19,7 +19,8 @@
     "libwayland-dev",
     "libxi-dev",
     "python3-pip",
-    "wget"
+    "wget",
+    "libtool"
   ],
   "dependencies_target": [
     "libasound2",

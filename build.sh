@@ -7,8 +7,10 @@ if [ "$1" == "amd64" ]; then
     dlarch="x64"
 fi
 
+frameworkver="$2"
+
 CLICK_ARCH=$(dpkg-architecture -qDEB_HOST_ARCH)
-CLICK_FRAMEWORK=ubuntu-sdk-16.04.5
+CLICK_FRAMEWORK=$frameworkver
 
 pkgver=1.68.1
 srcdir=$ROOT

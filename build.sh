@@ -7,8 +7,15 @@ if [ "$1" == "amd64" ]; then
     dlarch="x64"
 fi
 
+frameworkver="$2"
+if [ "$2" == "focal" ]; then
+    frameworkver="20.04"
+else
+    frameworkver="16.04.5"
+fi
+
 CLICK_ARCH=$(dpkg-architecture -qDEB_HOST_ARCH)
-CLICK_FRAMEWORK=ubuntu-sdk-16.04.5
+CLICK_FRAMEWORK=ubuntu-sdk-$frameworkver
 
 pkgver=1.68.1
 srcdir=$ROOT

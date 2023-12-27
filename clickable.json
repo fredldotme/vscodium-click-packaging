@@ -2,7 +2,7 @@
   "clickable_minimum_required": "6.24.0",
   "builder": "custom",
   "kill": "codium",
-  "build": "bash ${ROOT}/build.sh ${ARCH}",
+  "build": "bash ${ROOT}/build.sh ${ARCH} ${SDK_FRAMEWORK}",
   "dependencies_ppa": [
     "\"deb [arch=amd64] http://archive.ubuntu.com/ubuntu xenial-backports universe restricted multiverse main\"",
     "\"deb [arch=arm64,armhf] http://ports.ubuntu.com/ubuntu-ports xenial-backports universe restricted multiverse main\""

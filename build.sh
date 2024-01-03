@@ -40,9 +40,16 @@ fi
 
 # Build glib
 if [ ! -f $pkgdir/.glib-done ]; then
+    export CFLAGS="-Wno-error"
     OLD_PWD=$(pwd)
     cd $srcdir/3rdparty/glib
-    ./autogen.sh  --prefix=$pkgdir
+    OPT_arm64="glib_cv_stack_grows=no glib_cv_uscore=no ac_cv_func_posix_getpwuid_r=yes ac_cv_func_posix_getgrgid_r=yes
+            ac_cv_alignof_guint32=4 ac_cv_alignof_guint64=8 ac_cv_alignof_unsigned_long=8 glib_cv_long_long_format=ll 
+            glib_cv_sane_realloc=yes glib_cv_have_strlcpy=no glib_cv_va_val_copy=yes glib_cv_rtldglobal_broken=no 
+            glib_cv_monotonic_clock=no ac_cv_func_nonposix_getpwuid_r=no ac_cv_func_printf_unix98=no  
+            ac_cv_func_vsnprintf_c99=yes"
+    echo $OPT_arm64 > arm64.cache
+    ./autogen.sh --cache-file=arm64.cache --host=x86_64 --prefix=$pkgdir
     make -j$(nproc --all)
     make install
     touch $pkgdir/.glib-done

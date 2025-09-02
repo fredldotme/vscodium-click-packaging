@@ -1,12 +1,9 @@
 {
-  "clickable_minimum_required": "6.24.0",
+  "clickable_minimum_required": "8.4.0",
+  "framework": "ubuntu-touch-24.04-1.x",
   "builder": "custom",
   "kill": "codium",
   "build": "bash ${ROOT}/build.sh ${ARCH} ${SDK_FRAMEWORK}",
-  "dependencies_ppa": [
-    "\"deb [arch=amd64] http://archive.ubuntu.com/ubuntu xenial-backports universe restricted multiverse main\"",
-    "\"deb [arch=arm64,armhf] http://ports.ubuntu.com/ubuntu-ports xenial-backports universe restricted multiverse main\""
-  ],
   "dependencies_host": [
     "gtk-doc-tools",
     "libatk1.0-dev",
@@ -23,8 +20,15 @@
     "libtool"
   ],
   "dependencies_target": [
-    "libasound2",
     "libfreetype6",
-    "libpng16-16"
+    "libpng16-16",
+    "libgtk3-nocsd0",
+    "gtk3-nocsd"
+  ],
+  "install_bin": [
+    "/usr/bin/gtk3-nocsd"
+  ],
+  "install_lib": [
+    "/usr/lib/${ARCH_TRIPLET}/libgtk3-nocsd*.so*"
   ]
 }

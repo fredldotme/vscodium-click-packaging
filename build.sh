@@ -12,7 +12,7 @@ frameworkver="$2"
 CLICK_ARCH=$(dpkg-architecture -qDEB_HOST_ARCH)
 CLICK_FRAMEWORK=$frameworkver
 
-pkgver=1.68.1
+pkgver=1.103.25610
 srcdir=$ROOT
 pkgdir=$INSTALL_DIR
 pkgfile=VSCodium-linux-$dlarch-$pkgver.tar.gz
@@ -28,47 +28,47 @@ export PKG_CONFIG_PATH=$pkgdir/lib/pkgconfig:$pkgdir/share/pkgconfig:$PKG_CONFIG
 export LD_LIBRARY_PATH=$pkgdir/lib:$LD_LIBRARY_PATH
 
 # Build wayland-protocols
-if [ ! -f $pkgdir/.wayland-protocols-done ]; then
-    OLD_PWD=$(pwd)
-    cd $srcdir/3rdparty/wayland-protocols
-    ./autogen.sh --prefix=$pkgdir
-    make -j$(nproc --all)
-    make install
-    touch $pkgdir/.wayland-protocols-done
-    cd $OLD_PWD
-fi
+#if [ ! -f $pkgdir/.wayland-protocols-done ]; then
+#    OLD_PWD=$(pwd)
+#    cd $srcdir/3rdparty/wayland-protocols
+#    ./autogen.sh --prefix=$pkgdir
+#    make -j$(nproc --all)
+#    make install
+#    touch $pkgdir/.wayland-protocols-done
+#    cd $OLD_PWD
+#fi
 
 # Build glib
-if [ ! -f $pkgdir/.glib-done ]; then
-    OLD_PWD=$(pwd)
-    cd $srcdir/3rdparty/glib
-    ./autogen.sh  --prefix=$pkgdir
-    make -j$(nproc --all)
-    make install
-    touch $pkgdir/.glib-done
-    cd $OLD_PWD
-fi
+#if [ ! -f $pkgdir/.glib-done ]; then
+#    OLD_PWD=$(pwd)
+#    cd $srcdir/3rdparty/glib
+#    ./autogen.sh  --prefix=$pkgdir
+#    make -j$(nproc --all)
+#    make install
+#    touch $pkgdir/.glib-done
+#    cd $OLD_PWD
+#fi
 
 # Build gtk
-if [ ! -f $pkgdir/.gtk-done ]; then
-    OLD_PWD=$(pwd)
-    cd $srcdir/3rdparty/gtk
-    ./autogen.sh --prefix=$pkgdir --disable-x11-backend --enable-wayland-backend
-    make -j$(nproc --all)
-    make install
-    touch $pkgdir/.gtk-done
-    cd $OLD_PWD
-fi
+#if [ ! -f $pkgdir/.gtk-done ]; then
+#    OLD_PWD=$(pwd)
+#    cd $srcdir/3rdparty/gtk
+#    ./autogen.sh --prefix=$pkgdir --disable-x11-backend --enable-wayland-backend
+#    make -j$(nproc --all)
+#    make install
+#    touch $pkgdir/.gtk-done
+#    cd $OLD_PWD
+#fi
 
 # Build gtk-nocsd
-if [ ! -f $pkgdir/.gtk-nocsd-done ]; then
-    OLD_PWD=$(pwd)
-    cd $srcdir/3rdparty/gtk-nocsd
-    make -j$(nproc --all)
-    make install prefix=$pkgdir
-    touch $pkgdir/.gtk-nocsd-done
-    cd $OLD_PWD
-fi
+#if [ ! -f $pkgdir/.gtk-nocsd-done ]; then
+#    OLD_PWD=$(pwd)
+#    cd $srcdir/3rdparty/gtk-nocsd
+#    make -j$(nproc --all)
+#    make install prefix=$pkgdir
+#    touch $pkgdir/.gtk-nocsd-done
+#    cd $OLD_PWD
+#fi
 
 # Pull VSCodium
 
@@ -82,7 +82,7 @@ cp $ROOT/codium.apparmor $pkgdir/
 cp $ROOT/codium.desktop $pkgdir/
 cp $ROOT/codium.wrapper $pkgdir/
 chmod a+x $pkgdir/codium.wrapper
-chown root $pkgdir/chrome-sandbox
-chmod 4755 $pkgdir/chrome-sandbox
+#chown root $pkgdir/chrome-sandbox
+#chmod 4755 $pkgdir/chrome-sandbox
 
 exit 0

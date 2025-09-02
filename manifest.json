@@ -9,7 +9,7 @@
             "desktop":  "codium.desktop"
         }
     },
-    "version": "1.68.1",
+    "version": "1.103.25610",
     "maintainer": "Alfred Neumayer <dev.beidl@gmail.com>",
     "framework" : "@CLICK_FRAMEWORK@"
 }
